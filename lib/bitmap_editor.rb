@@ -7,7 +7,7 @@ end
 
 class BitmapEditor
   #It is assumed that the command 'I' will appear only at the start of the input file.
-  #The program will exit if the command 'I' appears anywhere else in the input file.
+  #The program will report error and continue, if the command 'I' appears anywhere else in the input file.
   #It is also set that the maximum bitmap size is 250 rows and columns.
   attr_accessor :bitmap, :file, :bitmap_rows, :bitmap_cols
   
@@ -57,8 +57,6 @@ class BitmapEditor
     end
 
     def process_commands(line)
-      puts "Processing command"
-      puts "Command : #{line}"
       command,arguments=line.split(" ",2)
       case command
       when 'S'
@@ -118,7 +116,6 @@ class BitmapEditor
       w = bitmap.flatten.max.to_s.size+2
       puts bitmap.map { |a| a.map { |i| i.to_s.rjust(w) }.join }
     end
-
      
     #Sets all values to O
     def clear_bitmap
