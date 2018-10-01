@@ -22,7 +22,7 @@ RSpec.describe ".initialise_bitmap" do
 	  	  @bitmap = BitmapEditor.new
 	   end
 
-      it 'it should accept valid row and column value between 1 and 250', command_l_positive: true do 
+      it 'it should accept valid row and column value between 1 and 250', command_i_positive: true do 
          rows = 5
          columns = 4
          command = "I #{columns} #{rows}"
@@ -32,7 +32,7 @@ RSpec.describe ".initialise_bitmap" do
          expect(@bitmap.bitmap).not_to be_nil
       end 
 
-      it 'it should not accept row value > 250', command_l_negative: true do 
+      it 'it should not accept row value > 250', command_i_negative: true do 
          rows = 251
          columns = 4
          command = "I #{columns} #{rows}" 
@@ -42,7 +42,7 @@ RSpec.describe ".initialise_bitmap" do
          verify_bitmap_nil      
       end
 
-      it 'it should not accept column value > 250', command_l_negative: true do 
+      it 'it should not accept column value > 250', command_i_negative: true do 
          rows = 2
          columns = 251
          command = "I #{columns} #{rows}"  
@@ -52,7 +52,7 @@ RSpec.describe ".initialise_bitmap" do
          verify_bitmap_nil  
       end
 
-      it 'it should not accept the command without row value', command_l_negative: true do 
+      it 'it should not accept the command without row value', command_i_negative: true do 
          columns = 100
          command = "I #{columns}" 
          expect {
@@ -61,7 +61,7 @@ RSpec.describe ".initialise_bitmap" do
          verify_bitmap_nil    
       end
 
-      it 'it should not accept the command without row and column value', command_l_negative: true do 
+      it 'it should not accept the command without row and column value', command_i_negative: true do 
          command = "I" 
          expect {
            send_command(command)
@@ -69,7 +69,7 @@ RSpec.describe ".initialise_bitmap" do
          verify_bitmap_nil 
       end
 
-      it 'it should not accept the command with float value for row', command_l_negative: true do 
+      it 'it should not accept the command with float value for row', command_i_negative: true do 
          columns = 2
          rows = 3.1
          command = "I #{columns} #{rows}"
@@ -79,7 +79,7 @@ RSpec.describe ".initialise_bitmap" do
          verify_bitmap_nil   
       end
 
-      it 'it should not accept the command with float value for column', command_l_negative: true do 
+      it 'it should not accept the command with float value for column', command_i_negative: true do 
          columns = 2.0
          rows = 3
          command = "I #{columns} #{rows}"
@@ -89,7 +89,7 @@ RSpec.describe ".initialise_bitmap" do
          verify_bitmap_nil    
       end
 
-      it 'it should not accept the command with value 0 for column', command_l_negative: true do 
+      it 'it should not accept the command with value 0 for column', command_i_negative: true do 
          columns = 0
          rows = 3
          command = "I #{columns} #{rows}" 
@@ -99,7 +99,7 @@ RSpec.describe ".initialise_bitmap" do
          verify_bitmap_nil     
       end
 
-      it 'it should not accept the command with alphanumeric value for row', command_l_negative: true do 
+      it 'it should not accept the command with alphanumeric value for row', command_i_negative: true do 
          columns = 2
          rows = "C5"
          command = "I #{columns} #{rows}"

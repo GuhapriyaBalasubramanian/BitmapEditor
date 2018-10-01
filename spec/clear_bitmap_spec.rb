@@ -9,7 +9,7 @@ RSpec.describe ".clear_bitmap" do
       Array.new(rows) { Array.new(columns,'O') } 
    end
 
-   def color_pixel
+   def color_coord
       command = "1 1 A"
       @bitmap.send :color_pixel, command
       expect(@bitmap.bitmap[0][0]).to eql("A")
@@ -24,7 +24,7 @@ RSpec.describe ".clear_bitmap" do
 	   end
 
       it 'it should clear the bitmap with all rows and columns set to O', command_c_positive: true do  
-         color_pixel   
+         color_coord
          @bitmap.send :clear_bitmap
          expect(@bitmap.bitmap).to eql(expected_array)
       end 
