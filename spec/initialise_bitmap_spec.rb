@@ -1,6 +1,6 @@
 require_relative '../lib/bitmap_editor'
 
-RSpec.describe "Test Command L: initialise_bitmap" do 
+RSpec.describe ".initialise_bitmap" do 
    let(:command) { "I 4 5" }
 
    def send_command(command)
@@ -19,7 +19,7 @@ RSpec.describe "Test Command L: initialise_bitmap" do
 	  	  @bitmap = BitmapEditor.new
 	   end
 
-      it 'the program should accept row and column value between 1 and 250', command_l_positive: true do 
+      it 'it should accept valid row and column value between 1 and 250', command_l_positive: true do 
          command = "I 4 5"
          @bitmap.send :initialise_bitmap, command
          expect(@bitmap.bitmap_cols).to eq 4
@@ -27,7 +27,7 @@ RSpec.describe "Test Command L: initialise_bitmap" do
          expect(@bitmap.bitmap).not_to be_nil
       end 
 
-      it 'the program should not accept row value > 250', command_l_negative: true do 
+      it 'it should not accept row value > 250', command_l_negative: true do 
          command = "I 4 251" 
          expect {
 		     send_command(command)
@@ -35,7 +35,7 @@ RSpec.describe "Test Command L: initialise_bitmap" do
          verify_bitmap_nil      
       end
 
-      it 'the program should not accept column value > 250', command_l_negative: true do 
+      it 'it should not accept column value > 250', command_l_negative: true do 
          command = "I 251 2" 
          expect {
 		     send_command(command)
@@ -43,7 +43,7 @@ RSpec.describe "Test Command L: initialise_bitmap" do
          verify_bitmap_nil  
       end
 
-      it 'the program should not accept the command without row value', command_l_negative: true do 
+      it 'it should not accept the command without row value', command_l_negative: true do 
          command = "I 2" 
          expect {
            send_command(command)
@@ -51,7 +51,7 @@ RSpec.describe "Test Command L: initialise_bitmap" do
          verify_bitmap_nil    
       end
 
-      it 'the program should not accept the command without column value', command_l_negative: true do 
+      it 'it should not accept the command without row and column value', command_l_negative: true do 
          command = "I" 
          expect {
            send_command(command)
@@ -59,7 +59,7 @@ RSpec.describe "Test Command L: initialise_bitmap" do
          verify_bitmap_nil 
       end
 
-      it 'the program should not accept the command with float value for row', command_l_negative: true do 
+      it 'it should not accept the command with float value for row', command_l_negative: true do 
          command = "I 2 3.1" 
          expect {
            send_command(command)
@@ -67,7 +67,7 @@ RSpec.describe "Test Command L: initialise_bitmap" do
          verify_bitmap_nil   
       end
 
-      it 'the program should not accept the command with float value for column', command_l_negative: true do 
+      it 'it should not accept the command with float value for column', command_l_negative: true do 
          command = "I 2.0 3" 
          expect {
            send_command(command)
@@ -75,7 +75,7 @@ RSpec.describe "Test Command L: initialise_bitmap" do
          verify_bitmap_nil    
       end
 
-      it 'the program should not accept the command with value 0 for column', command_l_negative: true do 
+      it 'it should not accept the command with value 0 for column', command_l_negative: true do 
          command = "I 0 3" 
          expect {
            send_command(command)
@@ -83,7 +83,7 @@ RSpec.describe "Test Command L: initialise_bitmap" do
          verify_bitmap_nil     
       end
 
-      it 'the program should not accept the command with alphanumeric value for row', command_l_negative: true do 
+      it 'it should not accept the command with alphanumeric value for row', command_l_negative: true do 
          command = "I 2 C5" 
          expect {
            send_command(command)
