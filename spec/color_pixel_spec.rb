@@ -23,7 +23,7 @@ RSpec.describe ".color_pixel" do
 
 	   before(:each) do
 	  	  @bitmap = BitmapEditor.new
-        command = "I #{columns} #{rows}"
+        command = "#{columns} #{rows}"
         @bitmap.send :initialise_bitmap, command      
 	   end
 
