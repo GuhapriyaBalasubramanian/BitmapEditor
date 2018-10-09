@@ -1,4 +1,5 @@
 # Bitmap editor
+sample text
 
 ..
 
